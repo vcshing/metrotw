@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Your app title -->
+    <title>地鐵</title>
+
+    <!-- This template defaults to the iOS CSS theme. To support both iOS and material design themes, see the Framework7 Tutorial at the link below:
+        http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
+     -->
+
+    <link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
+    <link rel="stylesheet" href="lib/framework7/css/framework7-icons.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/pinchzoom.js"></script>
+
+    <script type="text/javascript" src="js/local_storage_manager.js"></script>
+    <script language="javascript" src="js/GB2312TOBIG5.js"></script>
+    <script language="javascript" src="js/GBCodeUnicode.js"></script>
+    <script language="javascript" src="js/GB2312TOBIGGB.js"></script>
+    <script language="javascript" src="js/BIG5TOGB2312.js"></script>
+    <script language="javascript" src="js/BIGCodeUnicode.js"></script>
+    <script language="javascript" src="js/BIG5TOGBBIG.js"></script>
+    <style></style>
+</head>
+
+<body>
+    <!-- Status bar overlay for full screen mode (PhoneGap) -->
+    <div class="statusbar-overlay"></div>
+
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal">
+      <div class="menuList"></div>
+
+
+        <div class="content-block otherApp">
+            <p class="wordOtherApps">其他應用</p>
+        </div>
+        <div class="content-block">
+            <p class="shareApp">分享應用</p>
+        </div>
+        <div class="content-block">
+            <p class="googleMap">Google地圖</p>
+        </div>
+        <div class="content-block">
+            <p class="baiduMap">百度地圖</p>
+        </div>
+        <div class="content-block">
+            <p class="gaodeMap">高德地圖</p>
+        </div>
+
+    </div>
+
+    <!-- Views -->
+    <div class="views">
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Top Navbar-->
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                    <div class="sliding" style="margin-left: auto;margin-right: auto; width:100%">
+                      <p class="buttons-row">
+                        <a href="#" class="titleButton button button-big button-raised"><span class="titleSelectedMap"> </span> (<span class="">請點擊選擇地圖</span>)</a>
+                      </p>
+                    </div>
+
+                    <div class="right">
+
+                        <a href="#" class="link icon-only open-panel">
+                            <i class="icon icon-bars"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+            <div class="pages navbar-through toolbar-through">
+                <!-- Page, "data-page" contains page name -->
+                <div data-page="index" class="page">
+                    <!-- Scrollable page content -->
+
+                    <div class="page-content">
+
+                      <div class="pinch-zoom">
+            								<img class="pinchZoomImg" />
+            					</div>
+                        <p>官方網頁: <a class="mapSiteLink" onclick='openElementUrl(this,"_system")'></a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Bottom Toolbar-->
+                <!--<div class="toolbar">
+                <div class="toolbar-inner">
+
+                    <a href="#" class="link">Link 1</a>
+                    <a href="#" class="link">Link 2</a>
+                </div>
+            </div>
+			-->
+            </div>
+
+        </div>
+        <div style="display:none" class="hiddenDiv">
+            <a href="tutorials.html" class="startTutorialsURL"></a>
+        </div>
+        <script type="text/javascript" src="lib/framework7/js/framework7.js"></script>
+          <script type="text/javascript" src="js/customjs/langArr.js"></script>
+        <script type="text/javascript" src="js/customjs/function.js"></script>
+        <script type="text/javascript" src="js/customjs/my-app.js"></script>
+        <script type="text/javascript" src="js/customjs/bindEventShareFunction.js"></script>
+        <script type="text/javascript" src="js/customjs/initScript.js"></script>
+
+        <script type="text/javascript" src="cordova.js"></script>
+
+
+        <script>
+
+
+            $(function() {
+                lang = getCookie("lang", "selectedLang", checkLang());
+                mainPage();
+            })
+
+        </script>
+</body>
+
+</html>

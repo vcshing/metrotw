@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Your app title -->
+    <title>TABATA</title>
+
+    <!-- This template defaults to the iOS CSS theme. To support both iOS and material design themes, see the Framework7 Tutorial at the link below:
+        http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
+     -->
+
+    <link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
+    <link rel="stylesheet" href="lib/framework7/css/framework7-icons.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/function.js"></script>
+    <script type="text/javascript" src="js/local_storage_manager.js"></script>
+    <script language="javascript" src="js/GB2312TOBIG5.js"></script>
+    <script language="javascript" src="js/GBCodeUnicode.js"></script>
+    <script language="javascript" src="js/GB2312TOBIGGB.js"></script>
+    <script language="javascript" src="js/BIG5TOGB2312.js"></script>
+    <script language="javascript" src="js/BIGCodeUnicode.js"></script>
+    <script language="javascript" src="js/BIG5TOGBBIG.js"></script>
+    <style></style>
+</head>
+
+<body>
+    <!-- Status bar overlay for full screen mode (PhoneGap) -->
+    <div class="statusbar-overlay"></div>
+
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal">
+        <div class="content-block otherApp">
+            <p class="word wordOtherApps"> </p>
+        </div>
+        <div class="content-block shareApp">
+            <p class="word shareApp"> </p>
+        </div>
+    </div>
+
+    <!-- Views -->
+    <div class="views">
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Top Navbar-->
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                    <div class="sliding" style="margin-left: auto;margin-right: auto;">
+                        <p class="app_title word"> </p>
+
+                    </div>
+
+                    <div class="right">
+
+                        <!--
+                          Right link contains only icon - additional "icon-only" class
+                          Additional "open-panel" class tells app to open panel when we click on this link
+                        -->
+                        <a href="#" class="link icon-only open-panel">
+                            <i class="icon icon-bars"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+            <div class="pages navbar-through toolbar-through">
+                <!-- Page, "data-page" contains page name -->
+                <div data-page="index" class="page">
+                    <!-- Scrollable page content -->
+
+                    <div class="page-content">
+                        <p class="buttons-row">
+                            <a href="#" class="button langtc">繁中</a>
+                            <a href="#" class="button langDefault word"> </a>
+                            <a href="#" class="button langen">English</a>
+                        </p>
+                        <a href="intro.html" class="button introBtn word"> </a>
+                        <div class="sportContentContain">
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- Bottom Toolbar-->
+            <!--<div class="toolbar">
+                <div class="toolbar-inner">
+
+                    <a href="#" class="link">Link 1</a>
+                    <a href="#" class="link">Link 2</a>
+                </div>
+            </div>
+			-->
+        </div>
+
+    </div>
+    <div style="display:none" class="hiddenDiv">
+        <a href="tutorials.html" class="startTutorialsURL"></a>
+    </div>
+    <script>
+        var IntervalVibrate = "";
+    </script>
+    <script type="text/javascript" src="lib/framework7/js/framework7.js"></script>
+    <script type="text/javascript" src="js/customjs/function.js"></script>
+    <script type="text/javascript" src="js/customjs/my-app.js"></script>
+    <script type="text/javascript" src="js/customjs/bindEventShareFunction.js"></script>
+    <script type="text/javascript" src="js/customjs/initScript.js"></script>
+
+    <script type="text/javascript" src="cordova.js"></script>
+
+
+    <script>
+        var lang
+        var defaultLangArr = []
+        var loopLangArr = []
+        var sportContentLangArr = []
+        var sportContentDetailArr = []
+        defaultLangArr.push("其他應用");
+        defaultLangArr.push("分享應用");
+        defaultLangArr.push("簡易7分鐘TABATA");
+        defaultLangArr.push("預設語言");
+        defaultLangArr.push("介紹");
+
+
+        loopLangArr.push("今天");
+        loopLangArr.push("開始");
+        loopLangArr.push("總數");
+        loopLangArr.push("詳情");
+
+        sportContentLangArr.push("1.開合跳 30秒");
+        sportContentLangArr.push("2.太空椅 30秒");
+        sportContentLangArr.push("3.伏地挺身 30秒(20-25下)");
+        sportContentLangArr.push("4.平地捲腹 30秒(25-30下)");
+        sportContentLangArr.push("5.高低差腳部肌肉訓練 30秒");
+        sportContentLangArr.push("6.深蹲 30秒(12-15下)");
+        sportContentLangArr.push("7.雙臂屈伸(俗稱:三頭肌撐體)(盡量把身體重量放在手臂肌肉上) 30秒");
+        sportContentLangArr.push("8.撐體 30秒");
+        sportContentLangArr.push("9.原地踏步 30秒");
+        sportContentLangArr.push("10.漸進式訓練跨步 30秒");
+        sportContentLangArr.push("11.伏地挺身+轉體 30秒");
+        sportContentLangArr.push("12.側撐體 30秒");
+
+        var sport0 = "<p>預備姿勢立正站好，向上跳躍同時兩腳打開、兩手於頭部上方拍掌，再跳躍回到立正姿勢<\/p>";
+        sport0 += "<p>動作要領：<\/p>";
+        sport0 += "<ul>";
+        sport0 += "<li>";
+        sport0 += "<p>挺立、雙手放在兩側<\/p>";
+        sport0 += "<\/li>";
+        sport0 += "<li>";
+        sport0 += "<p>輕輕跳起來，雙腳往外的同時雙手往上拍（動作即可無需拍手）<\/p>";
+        sport0 += "<\/li>";
+        sport0 += "<li>";
+        sport0 += "<p>歸位，雙腳合併，雙手歸回兩側<\/p>";
+        sport0 += "<\/li>";
+        sport0 += "<\/ul>";
+        sport0 += "<p><strong>注意：<\/strong>落地時要從前腳掌過渡到全腳掌（腳尖落地過度到腳掌），過程中屈膝緩衝！以保護膝蓋。<\/p>";
+        sport0 += "<p>&nbsp;<\/p>";
+        var sport1 = "";
+        sport1 += "<p>找一面牆，將背部貼牆，懸空坐下，想像自己坐在一張隱形的椅子上。<\/p>";
+        sport1 += "<p><strong>【POINT】<\/strong>大腿與小腿間呈90度，注意膝蓋與腳尖的相對位置<\/p>";
+        var sport2 = "";
+        sport2 += "<p>手指張開，手朝前，手肘自然張開，腳打直，收小腹，身體下壓至胸口與臉盡量靠近地面，以不觸碰到為則，再撐起身體回到預備姿勢。<\/p>";
+        sport2 += "<p><strong>【POINT】<\/strong>在進行下推動作時，讓身體背部維持平行，切記勿翹屁股！<\/p>";
+        var sport3 = "";
+        sport3 += "<p>動作要領：<\/p>";
+        sport3 += "<p>身體平躺在墊子上，雙腿伸直，雙臂屈肘，雙手半卧拳分別放到耳側，然後深吸氣，使得腹部捲起到最高點，然後用一側的肘關節去努力觸碰到身體另一側屈腿的膝蓋，同時雙腿中另一側的腿離地，伸直，然後腹部始終處在收緊的狀態，擺動身體，使另一側的肘關節去觸碰另一側的膝蓋，這時開始屈腿的一側還原到伸直的狀態，但要保持離地，在轉體的過程中吸氣，肘關節觸碰到膝蓋的一剎那呼吸，然後反覆進行練習。<\/p>";
+        var sport4 = "";
+        sport4 += "<p>準備一張固定不易搖晃的椅子，或是在階梯上練習此動作。先將單腳抬起，右腳站上椅子後，左腳隨之跟進，並維持平衡，離開椅子時，要讓先抬起的那隻腳（右腳）先下去。<\/p>";
+        sport4 += "<p><strong>【POINT】<\/strong>注意左右兩邊的協調度，若第一次進行動作時是左腳先抬起，隔次可以輪替方式換腳進行。<\/p>";
+        var sport5 = "";
+        sport5 += "<p>兩腳約與肩同寬，抬頭挺胸，雙手向前伸直，進行深蹲動作，用屁股往後坐方式下蹲，讓臀部與地面維持平行。此鍛鍊以「Training2做太空椅」的訓練為軸，進而提升。<\/p>";
+        sport5 += "<p><strong>【POINT】<\/strong>動作進行時要將背部保持自然挺直，膝蓋絕對不可超過腳尖，由腳後根和腳掌均勻承擔全身重量。<\/p>";
+        var sport6 = "";
+        sport6 += "<p>雙手放在椅子上，用雙手支撐並且腳跟著地，接著慢慢往下坐，直到你的手肘彎曲呈垂直狀態之後用雙手力量支撐起身。<\/p>";
+        sport6 += "<p><strong>【POINT】<\/strong>初學者可試著將腳向內收起，維持半坐的姿勢進行訓練，能減輕負擔。<\/p>";
+        var sport7 = "";
+        sport7 += "<p>上半身用手肘支撐，手肘垂直於肩膀正下方，緊縮腹部核心，以腹肌為中心撐起身體，骨盆保持水平，膝蓋打直。<\/p>";
+        sport7 += "<p><strong>【POINT】<\/strong>手與身體呈垂直，背部打直，勿翹屁股！<\/p>";
+        var sport8 = "";
+        sport8 += "<p>雙腳張開與肩同寬，在原地進行抬膝動作，身體維持穩定，保持正常呼吸。<\/p>";
+        sport8 += "<p><strong>【POINT】<\/strong>看似為原地踏步，但應該盡可能把膝蓋往胸部貼近，依照個人情況，可在短時間內提升抬腿的速度。<\/p>";
+        var sport9 = "";
+        sport9 += "<p>身體維持站姿，右腳往前跨步，左腳在後，如同弓箭步姿勢般，進行下蹲動作。<\/p>";
+        sport9 += "<p><strong>【POINT】<\/strong>Lunge要注意，將背部保持自然挺直，且膝蓋絕對不可超過腳尖，前後腳大腿與小腿間呈現二個90度，最後，利用前腳的力量讓身體回到立姿。<\/p>";
+        var sport10 = "";
+        sport10 += "<p>伏地挺身的進階版，多增加一個單手上舉的動作。先做一下伏地挺身，再將單手撐撐地，另一手向上抬舉，盡可能提到最高在收回，左右兩側可交換進行動作。<\/p>";
+        sport10 += "<p><strong>【POINT】<\/strong>單手撐地，另一手向上高舉時，應注意平衡。<\/p>";
+        var sport11 = "";
+        sport11 += "<p>單手撐地，運用側腰腹力量將身體往上抬，將上半身撐起，但臀部也要離地，雙腳打直。<\/p>";
+        sport11 += "<p><strong>【POINT】<\/strong>此組動作要進行兩次，左右手各一次，左手撐地訓練後，再換邊進行。<\/p>";
+
+
+        sportContentDetailArr.push(sport0);
+        sportContentDetailArr.push(sport1);
+        sportContentDetailArr.push(sport2);
+        sportContentDetailArr.push(sport3);
+        sportContentDetailArr.push(sport4);
+        sportContentDetailArr.push(sport5);
+        sportContentDetailArr.push(sport6);
+        sportContentDetailArr.push(sport7);
+        sportContentDetailArr.push(sport8);
+        sportContentDetailArr.push(sport9);
+        sportContentDetailArr.push(sport10);
+        sportContentDetailArr.push(sport11);
+
+
+        $(function() {
+            lang = getCookie("lang", "selectedLang", checkLang());
+            //lang = ""
+			
+            pageInit();
+
+        })
+
+        function pageInit() {
+            setLang();
+
+            frontEndTranslateToSelectedLang(sportContentLangArr, function(translatedLangArr) {
+
+                var sportContentContainHtml = "";
+                $.each(translatedLangArr, function(index, content) {
+
+                    var todayAmt = getCookie("todayAmt" + moment().format('YYYYMMDD'), index, "0");
+                    var overAllAmt = getCookie("overAllAmt", index, "0");
+
+
+                    var todayAmtToWord = sec2str(todayAmt);
+                    var overAllAmtToWord = sec2str(overAllAmt);
+
+                    sportContentContainHtml += '                            <div class="card">';
+                    sportContentContainHtml += '                                <div class="card-header">';
+                    sportContentContainHtml += '';
+                    sportContentContainHtml += content + '<a class="sportContentDetail' + index + ' loopword3">Detail</a>';
+                    sportContentContainHtml += '';
+                    sportContentContainHtml += '                                </div>';
+                    sportContentContainHtml += '                                <div class="card-content"><img src="image/' + index + '.GIF" width="100%"></div>';
+                    sportContentContainHtml += '                                <div class="card-footer no-border">';
+                    sportContentContainHtml += '                                    <a><span class="loopword0"> </span> : <span class="todayAmt' + index + '" data-sec="' + todayAmt + '">' + todayAmtToWord + '</span></a>';
+                    sportContentContainHtml += '                                    <a href="#" class="sportContentImage' + index + ' loopword1"> </a>';
+                    sportContentContainHtml += '                                    <a><span class="loopword2"> </span> : <span class="overAllAmt' + index + '" data-sec="' + overAllAmt + '">' + overAllAmtToWord + '</span></a>';
+                    sportContentContainHtml += '                                </div>';
+                    sportContentContainHtml += '                            </div>';
+
+
+                })
+
+                $(".sportContentContain").html(sportContentContainHtml);
+
+                $.each(translatedLangArr, function(index, content) {
+                    $(".sportContentImage" + index).bind("click", function() {
+                        var todayAmt = parseInt($(".todayAmt" + index).attr("data-sec"));
+                        if (todayAmt < 0) {
+                            todayAmt = 0;
+                        }
+                        var overAllAmt = parseInt($(".overAllAmt" + index).attr("data-sec"));
+                        if (overAllAmt < 0) {
+                            overAllAmt = 0;
+                        }
+
+                        var modal = myApp.modal({
+                            title: ' ',
+                            text: ' ',
+                            afterText: '<div class="swiper-container" style="width: auto; margin:5px -15px -15px">' +
+                                '<div class="swiper-pagination"></div>' +
+                                '<div class="swiper-wrapper">' +
+                                '<div class="swiper-slide"><center><img src="image/' + index + '.GIF" height="150" style="display:block"></center></div>' +
+                                '</div>' +
+                                '</div>',
+                            buttons: [{
+                                text: 'End',
+                                class: 'tewts',
+                                bold: true,
+                                onClick: function(e) {
+                                    clearInterval(popupSetInterval);
+
+                                    if (getCookie("todayAmt" + moment().format('YYYYMMDD'), "", "") == "") {
+                                        setCookieIndex("sportDay", "", moment().format('YYYYMMDD'));
+                                    }
+
+                                    setCookieIndex("todayAmt" + moment().format('YYYYMMDD'), index, todayAmt + (ConfigIntervalTime - IntervalTime));
+                                    setCookieIndex("overAllAmt", index, overAllAmt + (ConfigIntervalTime - IntervalTime));
+                                    pageInit();
+                                }
+                            }]
+                        })
+                        var IntervalTime = 30;
+                        var ConfigIntervalTime = 30;
+                        var IntervalTitleTime = 3;
+                        var popupSetInterval = setInterval(function() {
+                            if (IntervalTitleTime > 0) {
+                                $(".modal-title").html("Ready " + IntervalTitleTime);
+                                IntervalTitleTime--;
+                            } else {
+                                if (IntervalTime == 0) {
+                                    clearInterval(popupSetInterval);
+                                    myApp.closeModal();
+                                    if (getCookie("todayAmt" + moment().format('YYYYMMDD'), "", "") == "") {
+                                        setCookieIndex("sportDay", "", moment().format('YYYYMMDD'));
+                                    }
+                                    setCookieIndex("todayAmt" + moment().format('YYYYMMDD'), index, todayAmt + (ConfigIntervalTime - IntervalTime));
+                                    setCookieIndex("overAllAmt", index, overAllAmt + (ConfigIntervalTime - IntervalTime));
+                                    pageInit();
+                                } else {
+                                    $(".modal-title").html("GO!");
+                                    $(".modal-text").html(IntervalTime);
+                                }
+                                IntervalTime--;
+                            }
+                        }, 1000);
+
+                    })
+
+
+                    $(".sportContentDetail" + index).bind("click", function() {
+                        frontEndTranslateToSelectedLang(sportContentDetailArr[index], function(translatedLang) {
+                            var modal = myApp.modal({
+                                title: ' ',
+                                text: ' ',
+                                afterText: translatedLang,
+                                buttons: [{
+                                    text: 'OK',
+                                    bold: true,
+                                    onClick: function(e) {}
+                                }]
+                            })
+
+                        });
+
+
+                    })
+
+                })
+
+
+                frontEndTranslateToSelectedLang(defaultLangArr, function(translatedLangArr) {
+                    assignWordClassTranslation(translatedLangArr, "word");
+                });
+
+                frontEndTranslateToSelectedLang(loopLangArr, function(translatedLangArr) {
+                    assignLoopWordClassTranslation(translatedLangArr);
+                });
+
+            });
+
+
+        }
+    </script>
+</body>
+
+</html>

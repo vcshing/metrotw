@@ -1,0 +1,55 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.skyexplorer.scanner"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.skyexplorer.scanner"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.skyexplorer.scanner"
+        },
+        "cordova-admob": {
+            "PACKAGE_NAME": "com.skyexplorer.scanner"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.skyexplorer.scanner"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "com.skyexplorer.scanner"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.skyexplorer.scanner"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "PACKAGE_NAME": "com.skyexplorer.scanner"
+        },
+        "com.verso.cordova.clipboard": {
+            "PACKAGE_NAME": "com.skyexplorer.scanner"
+        },
+        "cordova-plugin-x-toast": {
+            "PACKAGE_NAME": "com.skyexplorer.scanner"
+        },
+        "cordova-plugin-x-socialsharing": {
+            "PACKAGE_NAME": "com.skyexplorer.moneycalc"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.skyexplorer.moneycalc"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.skyexplorer.tellyou"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-connectivity-monitor": {
+            "PACKAGE_NAME": "com.skyexplorer.scanner"
+        }
+    }
+}
