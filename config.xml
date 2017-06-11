@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.skyexplorer.chinametor" version="0.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" android-versionCode="4">
-    <name>HK And China MTR</name>
+<widget id="com.skyexplorer.taiwanmetor" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" android-versionCode="1">
+    <name>TaiWan MTR</name>
     <description>
-        HK And China MTR
+        TaiWan MTR
     </description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Sky Explorer
