@@ -353,7 +353,7 @@ function addMenu(){
     setCookie("selectMapItem",selectMapItem);
     myApp.closePanel('left');
     $("body").trigger("dblclick")
-    location.reload();
+    window.location.reload(true);
   })
 
 
