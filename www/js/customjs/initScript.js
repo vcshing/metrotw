@@ -14,8 +14,10 @@ function mainPage(){
   $(".titleSelectedMap").html(menuArr[defaultMapItem]);
   $(".pinchZoomImg").attr("src","image/" + defaultMapItem + ".png");
   $(".mapSiteLink").html(menuSiteArr[defaultMapItem]);
+  setTimeout(function(){
+      new RTP.PinchZoom($('.pinchZoomImg'), {});
+  },500)
 
-  new RTP.PinchZoom($('.pinchZoomImg'), {});
 
 
 }
