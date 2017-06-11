@@ -7,7 +7,7 @@ $(".otherApp").bind("click", function(e) {
 })
 
 $(".shareApp").bind("click", function(e) {
-    window.plugins.socialsharing.share("China Metor", "Good App", "", "https://play.google.com/store/apps/details?id=com.skyexplorer.chinametor");
+    window.plugins.socialsharing.share("Taiwan Metor", "Good App", "", "https://play.google.com/store/apps/details?id=com.skyexplorer.taiwanmetor");
 })
 
 $(".googleMap").bind("click", function(e) {
