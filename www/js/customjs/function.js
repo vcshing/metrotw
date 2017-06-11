@@ -343,16 +343,14 @@ function addMenu(){
     var selectMapItem= $(this).find(".active-state").attr("data-menuListItem");
     $(".pinchZoomImg").attr("src","image/" + selectMapItem + ".png");
     //debugger
-    $('div.pinch-zoom').each(function () {
-        showImage = RTP.PinchZoom(this, {});
-    });
+    RTP.PinchZoom($('.pinchZoomImg'), {});
     $(this).find("a").removeClass("active");
     $(this).find(".active-state").addClass("active");
     $(".titleSelectedMap").html( $(this).find(".active-state").html() );
     $(".mapSiteLink").html(menuSiteArr[selectMapItem]);
     setCookie("selectMapItem",selectMapItem);
-    myApp.closePanel('left');
-    $("body").trigger("dblclick")
+  //  myApp.closePanel('left');
+  //  $(".pinchZoomImg").trigger("pz_doubletap")
     window.location.reload(true);
   })
 

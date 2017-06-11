@@ -15,9 +15,8 @@ function mainPage(){
   $(".pinchZoomImg").attr("src","image/" + defaultMapItem + ".png");
   $(".mapSiteLink").html(menuSiteArr[defaultMapItem]);
 
-  $('.pinchZoomImg').each(function () {
-       new RTP.PinchZoom($(this), {});
-  });
+  new RTP.PinchZoom($('.pinchZoomImg'), {});
+
 
 }
 
