@@ -328,11 +328,11 @@ function addMenu(){
   var metroListHTML="";
   $.each(menuArr, function( index, value ) {
 
-  //  if(defaultMapItem ==index){
-  //    metroListHTML += "<p><a href=\"#\" class=\"button button-raised active\" data-menuListItem=\"" +index+"\">"+value+"<\/a><\/p>";
-  //  }else {
+   if(defaultMapItem ==index){
+      metroListHTML += "<p><a href=\"#\" class=\"button button-raised active\" data-menuListItem=\"" +index+"\">"+value+"<\/a><\/p>";
+    }else {
       metroListHTML += "<p><a href=\"#\" class=\"button button-raised\" data-menuListItem=\"" +index+"\">"+value+"<\/a><\/p>";
-//    }
+    }
   });
   $(".menuList").html(metroListHTML);
 
