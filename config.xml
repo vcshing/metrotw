@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.skyexplorer.taiwanmetor" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" android-versionCode="1">
-    <name>TaiWan MTR</name>
+<widget id="com.skyexplorer.taiwanmetor" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" android-versionCode="2">
+    <name>TaiWan MRT</name>
     <description>
         TaiWan MTR
     </description>
