@@ -2,12 +2,12 @@ $(".otherApp").bind("click", function(e) {
     e.preventDefault();
     var target = "_system";
     var options = "location=yes";
-    var url = "https://play.google.com/store/apps/developer?id=Sky+Explorer";
+    var url = "https://play.google.com/store/apps/developer?id=Bug+Birl";
     window.open(url, target, options);
 })
 
 $(".shareApp").bind("click", function(e) {
-    window.plugins.socialsharing.share("Taiwan Metor", "Good App", "", "https://play.google.com/store/apps/details?id=com.skyexplorer.taiwanmetor");
+    window.plugins.socialsharing.share("Taiwan Metor", "Good App", "", "https://play.google.com/store/apps/details?id=com.buggetbirl.taiwanmetor");
 })
 
 $(".googleMap").bind("click", function(e) {
